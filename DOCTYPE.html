@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPTCHA Test</title>
+  <style>
+    /* Styles for captcha */
+    #captcha-container {
+      font-family: Arial, sans-serif;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 20px;
+      max-width: 300px;
+    }
+    #captcha-image {
+      width: 300px; /* Set the width of the image */
+      height: 300px; /* Maintain aspect ratio */
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="captcha-container">
+  <h2>CAPTCHA Test</h2>
+  <p>Fill in the response box with what the expression of the image is from the following options:<br>
+     1. Happy<br>
+     2. Anxious<br>
+     3. Angry </p>
+  <img id="captcha-image" src="C:\Users\yadav\Downloads\image2better.jpg" alt="CAPTCHA Image">
+  <input type="text" id="captcha-input" placeholder="Enter CAPTCHA">
+  <button onclick="checkCaptcha()">Submit</button>
+  <p id="captcha-result"></p>
+</div>
+
+<script>
+  function checkCaptcha() {
+    var userInput = document.getElementById('captcha-input').value;
+    var isValid = validateCaptcha(userInput);
+    var resultText = isValid ? "CAPTCHA solved successfully! Redirecting..." : "CAPTCHA not solved correctly. Please try again.";
+    document.getElementById('captcha-result').innerText = resultText;
+    
+    // Redirect to another page upon successful CAPTCHA completion
+    if (isValid) {
+      setTimeout(function() {
+        window.location.href = "https://www.google.com"; // Change this URL to your desired destination
+      }, 2000); // Redirect after 3 seconds (adjust the delay as needed)
+    }
+  }
+
+  // Placeholder function to validate the CAPTCHA
+  function validateCaptcha(userInput) {
+    return userInput === "Happy"; // Placeholder validation logic
+  }
+</script>
+
+</body>
+</html>
+
